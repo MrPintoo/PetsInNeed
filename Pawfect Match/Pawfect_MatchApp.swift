@@ -1,14 +1,14 @@
 //
-//  Project_KryptoApp.swift
-//  Project Krypto
+//  Pawfect_MatchApp.swift
+//  Pawfect Match
 //
-//  Created by bryant pinto on 7/20/25.
+//  Created by bryant pinto on 7/24/25.
 //
 
 import SwiftUI
 
 @main
-struct Project_KryptoApp: App {
+struct Pawfect_MatchApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

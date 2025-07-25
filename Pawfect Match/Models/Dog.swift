@@ -23,5 +23,11 @@ struct Dog: Identifiable, Codable, Equatable {
     // TODO: Add support for user favorites (e.g., isFavorite: Bool)
 }
 
+struct SuccessStory: Identifiable {
+    let id = UUID()
+    let title: String
+    let text: String
+}
+
 // TODO: Add User model for user accounts and authentication
 // TODO: Add APIService for remote JSON API fetching 
