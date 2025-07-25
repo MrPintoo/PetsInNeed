@@ -1,0 +1,35 @@
+import Foundation
+import SwiftUI
+
+class HomeViewModel: ObservableObject {
+    @Published var dogs: [Dog] = []
+    private let animalService: AnimalServiceProtocol
+    
+    init(animalService: AnimalServiceProtocol = MockAnimalService()) {
+        self.animalService = animalService
+        loadDogs()
+    }
+    
+    func loadDogs() {
+        dogs = animalService.fetchDogs()
+    }
+    
+    func urgencyColor(for level: Dog.UrgencyLevel) -> Color {
+        switch level {
+        case .low: return .green
+        case .medium: return .yellow
+        case .high: return .orange
+        case .critical: return .red
+        }
+    }
+    
+    func isEuthanasiaNear(for dog: Dog) -> Bool {
+        let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: dog.euthanasiaDate).day ?? 0
+        return daysLeft <= 3
+    }
+    
+    func countdownString(for dog: Dog) -> String {
+        let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: dog.euthanasiaDate).day ?? 0
+        return daysLeft > 0 ? "\(daysLeft)d left" : "Last day!"
+    }
+} 
